@@ -1,8 +1,7 @@
 #!/bin/bash
 
-#user=$1
 
-change_user_password ( ) {
+change_user_password () {
 	#List of different combinations of characters that we're gonna mix for our new secret password
 	local list=( egUFkBvvG evJfUQL evJfUQLs bk9PHTX3 zA jrn 7zH zAjrn7zH6J bCwzUA 5dCW5YYT 5dCW 5YYTbX 7uPT3A)
 
@@ -17,7 +16,7 @@ change_user_password ( ) {
 	echo "Nueva pass: $password"
 
 	#Change the user's actual password
-	echo $passord | passwd $user --stdin
+	echo $password | passwd root --stdin
 }
 
 
@@ -27,5 +26,8 @@ break_fstab () {
 
 }
 
+change_user_password
 break_fstab
+
+systemctl reboot
 
