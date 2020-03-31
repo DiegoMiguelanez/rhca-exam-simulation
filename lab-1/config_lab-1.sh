@@ -26,8 +26,17 @@ break_fstab () {
 
 }
 
-change_user_password
-break_fstab
+delete_nmcli_connections (){
+	for i in $(nmcli connection show | cut -f 1 -d " " | sed '1d')
+		do
+			nmcli connection delete $i
+		done
+}
 
-systemctl reboot
+#change_user_password
+#break_fstab
+delete_nmcli_connections
+
+
+#systemctl reboot
 
