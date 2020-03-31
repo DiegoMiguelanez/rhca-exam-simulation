@@ -1,7 +1,7 @@
 #!/bin/bash
 
-
-
+#Set persistent text field to hold different values required by the exam for generation an evaluation
+exam_lab1_file="exam_lab1.txt"
 
 set-default-target () {
 	
@@ -12,7 +12,7 @@ set-default-target () {
 	default_target=${targets_list[$(( $RANDOM % ${#targets_list[@]} ))]}
 	
 	#Update persistent exam textfile exam.txt
-	sed -i "s/target:.*/target:$default_target/" exam.txt	
+	sed -i "s/target:.*/target:$default_target/" $exam_lab1_file	
 
 	echo "1) Set $default_target as system's default target"
 }
@@ -26,7 +26,7 @@ set-system-hostname () {
         random_hostname=${hostname_list[$(( $RANDOM % ${#hostname_list[@]} ))]}
 
 	#Update persistent exam textfile exam.txt
-        sed -i "s/hostname:.*/hostname:$random_hostname/" exam.txt
+        sed -i "s/hostname:.*/hostname:$random_hostname/" $exam_lab1_file
 
 
         echo "2) Set $random_hostname as system's hostname"

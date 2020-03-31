@@ -1,2 +1,2 @@
 target:rescue.target
-hostname:voodoo
+hostname:claw
