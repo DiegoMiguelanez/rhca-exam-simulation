@@ -1,6 +1,6 @@
 #!/bin/bash
 
-user=$1
+#user=$1
 
 change_user_password ( ) {
 	#List of different combinations of characters that we're gonna mix for our new secret password
@@ -20,4 +20,12 @@ change_user_password ( ) {
 	echo $passord | passwd $user --stdin
 }
 
-change_user_password
+
+break_fstab () {
+
+	echo "/dev/not-found     /not-found                       fake     defaults        0 0" >> /etc/fstab
+
+}
+
+break_fstab
+
