@@ -11,6 +11,8 @@ set-default-target () {
 	#Randomly pick one from the list
 	default_target=${targets_list[$(( $RANDOM % ${#targets_list[@]} ))]}
 	
+	#Update persistent exam textfile exam.txt
+	sed -i "s/target:.*/target:$default_target/" exam.txt	
 
 	echo "1) Set $default_target as system's default target"
 }
@@ -22,6 +24,9 @@ set-system-hostname () {
 
         #Randomly pick one from the list
         random_hostname=${hostname_list[$(( $RANDOM % ${#hostname_list[@]} ))]}
+
+	#Update persistent exam textfile exam.txt
+        sed -i "s/hostname:.*/hostname:$random_hostname/" exam.txt
 
 
         echo "2) Set $random_hostname as system's hostname"
