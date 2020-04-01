@@ -1,2 +1,10 @@
-target:rescue.target
-hostname:claw
+target:multi-user.target:1
+hostname:viper:1
+
+#nmcli connection values
+address:192.168.20.10:0
+device:enp0s1:1
+connection:enp0s4:0
+method:manual:0
+
+
