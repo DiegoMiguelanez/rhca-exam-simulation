@@ -4,11 +4,17 @@
 EXAM_FILE="exam_lab1.txt"
 #Global variables
 keyValue=""
+keyCompletionState=0
 
 #We pass the key which value we're looking for to set it to keyValue global variable
 get_key-value () {
 	keyValue=$(cat $EXAM_FILE | grep $1 | cut -d ":" -f 2)	
 }
+
+get_key-completion-state () {
+         keyCompletionState=$(cat $EXAM_FILE | grep $1 | cut -d ":" -f 3)
+}
+
 
 
 #Example: set_key-value_completion-state hostname 1
@@ -41,12 +47,34 @@ evaluate_key-value_against_string target $(systemctl get-default)
 evaluate_key-value_against_string hostname $(hostname)
 
 
-#test-network () {
+test-network () {
+	#We get value for key="connection"
+	get_key-value connection
 
-#	for available_connection in $(nmcli connection s | sed '1d' | awk '{ print $1}')
-#		do
-#			test-function $available_connection $()
-#			if [[ $available_connection ==   ]]
+	for available_connection in $(nmcli connection s | sed '1d' | awk '{print $1}')
+		do
+			#We compare connection's value with the connection being tested in loop
+			if [[ $available_connection == $keyValue ]]
+			then
+				evaluate_key-value_against_string connection $available_connection
+				evaluate_key-value_against_string device $(nmcli c s $available_connection | grep GENERAL.DEVICES | awk '{ print $2 }')
+                                evaluate_key-value_against_string method $(nmcli c s $available_connection | grep ipv4.method | awk '{ print $2 }')
+                               	evaluate_key-value_against_string address $(nmcli c s $available_connection | grep ipv4.addresses | awk '{ print $2 }' | cut -f 1 -d '/')
+
+			fi
+		done		
+}
+
+
+test-network
+#printf "%s\n" "${array[@]}"
+#for i in array
+#	do 
+#		echo $i
+#	done
+
+
+#test-network 
 #	local connection=$(nmcli connection s | sed '1d' | awk '{ print $1}')
 #	local device=$(nmcli connection s | sed '1d' | awk '{ print $4}')
 #	local address=$(nmcli c s enp0s4 | grep ipv4.addresses | awk '{ print $2 }')
