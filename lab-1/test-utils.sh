@@ -1,10 +1,10 @@
 #!/bin/bash
 
 #Constants
-EXAM_FILE="exam_lab1.txt"
+EXAM_FILE=".hidden-exam.txt"
 #Global variables
-local keyValue=""
-local keyState=0
+keyValue=""
+keyState=0
 
 #We pass the key which value we're looking for to set it to keyValue global variable
 get_keyValue () {
@@ -28,7 +28,7 @@ set_keyState () {
 test_keyValue () {
 
         #Add 
-        get_key-value $1
+        get_keyValue $1
 
         if [[ $keyValue == $2 ]]
         then

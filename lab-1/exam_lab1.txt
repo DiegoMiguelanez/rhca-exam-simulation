@@ -1,9 +1,0 @@
-target:multi-user.target:1
-hostname:viper:1
------------------
-address:192.168.20.10:1
-device:enp1s0:1
-connection:enp0s4:1
-method:manual:1
-dns:8.8.8.8:0
-

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+source test-utils.sh
 #Test default-target
 test_default-target () {
 	test_keyValue target $(systemctl get-default)	
@@ -23,9 +23,13 @@ test-network () {
 				test_keyValue device  $(nmcli c s $available_connection | grep GENERAL.DEVICES | awk '{ print $2 }')
 		                test_keyValue method  $(nmcli c s $available_connection | grep ipv4.method     | awk '{ print $2 }')
 		                test_keyValue address $(nmcli c s $available_connection | grep ipv4.addresses  | awk '{ print $2 }' | cut -f 1 -d '/')
+                                test_keyValue dns     $(nmcli c s $available_connection | grep ipv4.dns        | awk '{ print $2 }' | cut -f 1 -d '/')
 
 			fi
 		done		
 }
 
+test_default-target
+test_hostname
+test-network
 

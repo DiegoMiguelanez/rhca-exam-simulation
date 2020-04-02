@@ -1,8 +1,8 @@
 
-target:rescue.target:0
-hostname:voodoo:0
-address:192.168.20.99:0
-device:enp1s0:0
-connection:seri:0
-method:manual:0
-dns:8.8.4.4:0
+target:rescue.target:1
+hostname:voodoo:1
+address:192.168.20.99:1
+device:enp1s0:1
+connection:seri:1
+method:manual:1
+dns:8.8.4.4:1

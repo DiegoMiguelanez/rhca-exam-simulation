@@ -34,4 +34,8 @@ delete_nmcli-connections (){
 		done
 }
 
+unmask_systemd-units () {
+	systemctl unmask named.service
+	systemctl unmask systemd-timedated.service
+}
 
