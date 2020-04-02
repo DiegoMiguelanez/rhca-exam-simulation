@@ -15,7 +15,7 @@ question_default-target () {
 #	sed -i "s/target:.*/target:$default_target/" $exam_lab1_file	
 
 	echo "1) Set $default_target as system's default target" >> $EXAM
-
+	echo "target:$default_target:0" >> $HIDDEN_EXAM
 }
 
 question_system-hostname () {
@@ -31,7 +31,7 @@ question_system-hostname () {
 
 
         echo "2) Set $random_hostname as system's hostname" >> $EXAM
-
+	echo "hostname:$random_hostname:0" >> $HIDDEN_EXAM
 
 }
 
@@ -50,7 +50,12 @@ question_network-configuration () {
 	connection=${connections[$(( $RANDOM % ${#connections[@]} ))]}
 	dns_server=${dns_servers[$(( $RANDOM % ${#dns_servers[@]} ))]}
 
-	echo "3) Create a new connection named: $connection via $interface device with ip: $ip and dns: $dns_server" >> $EXAM
+	echo "3) Create a new connection named: $connection via $interface device with static ip: $ip and dns: $dns_server" >> $EXAM
+	echo "address:$ip:0" >> $HIDDEN_EXAM
+	echo "device:$interface:0" >> $HIDDEN_EXAM
+	echo "connection:$connection:0" >> $HIDDEN_EXAM
+	echo "method:manual:0" >> $HIDDEN_EXAM
+	echo "dns:$dns_server:0" >> $HIDDEN_EXAM
 }
 
 question_masked-units () {
@@ -59,6 +64,7 @@ question_masked-units () {
 
 create_empty-exam () {
 	echo > $EXAM
+	echo > $HIDDEN_EXAM
 	echo "0) Break into the system to proceed with the exam" >> $EXAM
 	question_default-target 
 	question_system-hostname 

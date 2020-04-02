@@ -1,6 +1,6 @@
 
 0) Break into the system to proceed with the exam
 1) Set rescue.target as system's default target
-2) Set aqua as system's hostname
-3) Create a new connection named: zane via enp7s0 device with ip: 192.168.20.88 and dns: 1.1.1.1
+2) Set voodoo as system's hostname
+3) Create a new connection named: seri via enp1s0 device with static ip: 192.168.20.99 and dns: 8.8.4.4
 4) Mask units named.service and systemd-timedated.service
