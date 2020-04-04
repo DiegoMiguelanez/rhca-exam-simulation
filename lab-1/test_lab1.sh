@@ -1,8 +1,15 @@
 #!/bin/bash
 source test-utils.sh
+EXAM=exam.txt
+
 #Test default-target
 test_default-target () {
 	test_keyValue target $(systemctl get-default)	
+	get_keyState target
+	if [[ $keyState -eq 1 ]]
+	then
+		sed "s/$(grep '1)' $EXAM)/$(grep '1)' $EXAM) (Done)/" $EXAM 
+	fi
 }
 
 #Test hostname

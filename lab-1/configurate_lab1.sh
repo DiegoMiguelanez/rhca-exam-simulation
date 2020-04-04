@@ -34,6 +34,10 @@ delete_nmcli-connections (){
 		done
 }
 
+set_wrong-hostname () {
+	hostnamectl set-hostname wrong-hostname
+}
+
 unmask_systemd-units () {
 	systemctl unmask named.service
 	systemctl unmask systemd-timedated.service
