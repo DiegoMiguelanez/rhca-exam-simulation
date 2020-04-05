@@ -1,0 +1,8 @@
+
+target:graphical.target:0
+hostname:viper:0
+address:192.168.20.3:0
+device:enp7s0:0
+connection:zane:0
+method:manual:0
+dns:149.112.112.112:0

@@ -1,0 +1,6 @@
+
+0) Break into the system to proceed with the exam
+1) Set graphical.target as system's default target
+2) Set viper as system's hostname
+3) Create a new connection named: zane via enp7s0 device with static ip: 192.168.20.3 and dns: 149.112.112.112
+4) Mask units named.service and systemd-timedated.service
