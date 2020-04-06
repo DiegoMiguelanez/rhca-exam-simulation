@@ -1,6 +1,6 @@
 
-0) Break into the system to proceed with the exam
-1) Set graphical.target as system's default target
-2) Set viper as system's hostname
-3) Create a new connection named: zane via enp7s0 device with static ip: 192.168.20.3 and dns: 149.112.112.112
-4) Mask units named.service and systemd-timedated.service
+(Block 2)
+You will need an empty disk with at least 1200 MG free space and you have to create a dos partition table
+1) Create a new 89 MB vfat Physical Partition mounted under /home/orchard/bitterwood
+2) Create a new partition_size 216 MB swap partition and add it to the system to increase systems swap space
+3) Create a volume group called vg_zagreus with 229 MG and a logic volume called lv_thetha of 114 vfat mounted under /mnt/zeta
